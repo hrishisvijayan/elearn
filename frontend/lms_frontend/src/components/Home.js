@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
 import {Link} from 'react-router-dom'
 
 function Home() {
+    useEffect(()=>{       // whenever this component is loaded then it will change the title to home 
+        document.title='Home'
+    })
     return (
         <div className="container mt-4" >
             {/* latest courses starts here */}

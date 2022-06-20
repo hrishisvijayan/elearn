@@ -17,19 +17,19 @@ from . import models
 class TeachersList(generics.ListCreateAPIView):       #through this class method we can view all the contents of the teacher allows to create data through post method
     queryset=models.Teacher.objects.all()
     serializer_class=TeacherSerializer
-    permission_classes=[permissions.IsAuthenticated]
+    # permission_classes=[permissions.IsAuthenticated]
 
 
 class TeachersDetail(generics.RetrieveUpdateAPIView):   #through this class method we can view all the contents of the teacher allows to update data through put method
     queryset=models.Teacher.objects.all()
     serializer_class=TeacherSerializer
-    permission_classes=[permissions.IsAuthenticated]
+    # permission_classes=[permissions.IsAuthenticated]
 
 
 class TeachersDetail(generics.RetrieveUpdateDestroyAPIView):   #through this class method we can delete the data 
     queryset=models.Teacher.objects.all()
     serializer_class=TeacherSerializer
-    permission_classes=[permissions.IsAuthenticated] 
+    # permission_classes=[permissions.IsAuthenticated] 
 
 
 

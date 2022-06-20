@@ -11,7 +11,7 @@ class Teacher(models.Model):
     password=models.CharField(max_length=100)
     qualification=models.CharField(max_length=200,null=True)
     mobile_no = models.CharField(max_length=20)
-    address=models.TextField()
+    skills=models.TextField(max_length=200)
 
     class Meta:                #this meta is used inorder to modify the name of database during display in django admin page
         verbose_name_plural = "1. Teacher" 
