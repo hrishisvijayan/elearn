@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'main',
+    'corsheaders',                 #even if I comment this cross origin policy is being managed why ?
     'rest_framework',
     'rest_framework.authtoken',
     'django.contrib.admin',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',                   #but If I comment this cross origin policy error will be there, why ?
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -141,3 +143,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_ALL_ORIGINS = True            # It is used to overcome the cross origin policy problem as a solution corsheader is installed and registered in apps and middleware, and here we can allow all origins or specific also ,,,, read django corsheaders documentation
+# CORS_ALLOWED_ORIGINS=[                   # or this can also be used for specific url
+#     "http://localhost:3000"
+# ]

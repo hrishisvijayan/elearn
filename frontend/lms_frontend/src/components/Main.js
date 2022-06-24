@@ -30,6 +30,7 @@ import AllCourses from './AllCourses';
 import PopularCourses from './PopularCourses';
 import PopularTeachers from './PopularTeachers';
 import CategoryCourses from './CategoryCourses';
+import TeacherLogout from './Teacher/TeacherLogout';
 
 
 
@@ -61,6 +62,7 @@ function Main() {
 
         {/* Teacher  */}
         <Route path="/teacher-login" element={<TeacherLogin />} />
+        <Route path="/teacher-logout" element={<TeacherLogout />} />
         <Route path="/teacher-register" element={<TeacherRegister />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
         <Route path="teacher-mycourses" element={<TeacherMycourses />} />

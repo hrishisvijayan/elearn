@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
+
+
 function Header() {
+
+
+  useEffect(()=>{
+    document.title='Teacher Login'
+    console.log('how are you',localStorage.teacherLoginStatus)
+  })
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark">
       <div className="container">
@@ -26,17 +36,21 @@ function Header() {
                 </a>
 
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li> 
-                    <Link to="/teacher-login" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Login </a> </Link>
-                   </li>
-                  <li>
-                  <Link to="/teacher-register" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Register </a> </Link>
-                  </li>
+                { localStorage.teacherLoginStatus !=='true' &&
+                          <>
+                          <li> 
+                            <Link to="/teacher-login" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Login </a> </Link>
+                          </li>
+                          <li>
+                          <Link to="/teacher-register" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Register </a> </Link>
+                          </li>
+                          </>
+                  }
                   <li>
                   <Link to="/teacher-dashboard" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Dashboard </a> </Link>
                   </li>
                   <li>
-                  <Link to="/teacher-register" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Logout </a> </Link>
+                  <Link to="/teacher-logout" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Logout </a> </Link>
                   </li>
                   
                 </ul>

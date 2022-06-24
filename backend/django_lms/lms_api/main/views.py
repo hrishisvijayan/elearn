@@ -1,4 +1,8 @@
+from ast import IsNot
+from asyncio.windows_events import NULL
 from django.shortcuts import render
+from django.http import JsonResponse,HttpResponse       # added as new after making react and to do login
+from django.views.decorators.csrf import csrf_exempt    # added as new after making react and to do login
 from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework import generics
@@ -32,4 +36,16 @@ class TeachersDetail(generics.RetrieveUpdateDestroyAPIView):   #through this cla
     # permission_classes=[permissions.IsAuthenticated] 
 
 
+@csrf_exempt
+def teacher_login(request):
+    email       = request.POST.get('email')
+    password    = request.POST.get('password')
+    teacherData = models.Teacher.objects.get(email=email,password=password)
+    if teacherData:
+        return JsonResponse({'bool' : True})
+    else:
+        return JsonResponse({'bool' : False})
+    
 
+   
+        
