@@ -25,6 +25,8 @@ function TeacherMycourses() {
                                     <td>Php Development</td>
                                     <td> <Link to='/'> Samar </Link> </td>
                                     <td> <Link to='/'> <button className='btn btn-primary' > Remove </button>  </Link> </td>
+                                    <Link to='/teacher-addchapter/1' className='btn btn-success active mx-2' >Add Chapters</Link>
+                                    
                                 </tbody>
 
                             </table>

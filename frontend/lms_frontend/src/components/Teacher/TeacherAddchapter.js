@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Sidebar from './TeacherSidebar';
 
 
-function TeacherFavourite() {
+function TeacherAddchapter() {
     return (
        
         <div className='container mt-4' >
@@ -12,7 +12,7 @@ function TeacherFavourite() {
             </aside>
             <section className='col-md-9' >
                 <div className='card' >
-                    <h5 className='card-header' > Add Course </h5>
+                    <h5 className='card-header' > Add Chapter </h5>
                     <div className='card-body' >
 
 
@@ -29,7 +29,7 @@ function TeacherFavourite() {
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label"> Course Video </label>
+                            <label for="staticEmail" class="col-sm-2 col-form-label"> video </label>
                             <div class="col-sm-10">
                                 <input type="file" readonly class="form-control" id="staticEmail" />
                             </div>
@@ -37,9 +37,9 @@ function TeacherFavourite() {
                         
 
                         <div class="mb-3 row">
-                            <label for="staticEmail" class="col-sm-2 col-form-label"> Technologies </label>
+                            <label for="staticEmail" class="col-sm-2 col-form-label"> Remarks </label>
                             <div class="col-sm-10">
-                                <input type="text" readonly class="form-control" id="staticEmail" />
+                                <input type="text" readonly class="form-control" placeholder='This video is focused on django rest framework' id="staticEmail" />
                             </div>
                         </div>
 
@@ -55,4 +55,4 @@ function TeacherFavourite() {
     )
 
 }
-export default TeacherFavourite;
+export default TeacherAddchapter;

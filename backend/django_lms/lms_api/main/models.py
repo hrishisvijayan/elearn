@@ -24,6 +24,8 @@ class CourseCategory(models.Model):
     class Meta:                #this meta is used inorder to modify the name of database during display in django admin page
         verbose_name_plural = "2. Course Categories"         
 
+    def __str__(self):         #to show the title name on admin page instead of objectid and name
+        return self.title
 
 
 
@@ -33,12 +35,14 @@ class Course(models.Model):
     teacher = models.ForeignKey(Teacher,on_delete=models.CASCADE) 
     title = models.CharField(max_length=150)
     description = models.TextField()
+    featured_img=models.ImageField(upload_to='course_images/',null=True)     # for uploading images 
+    techs=models.TextField(null=True)                                        # this null = true is for because it is a modification
 
     class Meta:                #this meta is used inorder to modify the name of database during display in django admin page
         verbose_name_plural = "3. Course " 
 
 
-#Teacher model
+#Student model
 class Student(models.Model):
     full_name=models.CharField(max_length=100)
     email=models.CharField(max_length=100)

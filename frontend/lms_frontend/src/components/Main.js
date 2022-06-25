@@ -21,7 +21,7 @@ import TeacherLogin from './Teacher/Teacherlogin';
 import TeacherRegister from './Teacher/TeacherRegister';
 import TeacherDashboard from './Teacher/TeacherDashboard';
 import TeacherMycourses from './Teacher/TeacherMycourses';
-import TeacherFavourite from './Teacher/TeacherFavourite';
+import TeacherFavourite from './Teacher/TeacherAddcourse';
 import TeacherRecommended from './Teacher/TeacherRecommended';
 import TeacherProfilesetting from './Teacher/TeacherProfilesetting';
 import TeacherChangepassword from './Teacher/TeacherChangepassword';
@@ -31,6 +31,7 @@ import PopularCourses from './PopularCourses';
 import PopularTeachers from './PopularTeachers';
 import CategoryCourses from './CategoryCourses';
 import TeacherLogout from './Teacher/TeacherLogout';
+import TeacherAddchapter from './Teacher/TeacherAddchapter';
 
 
 
@@ -66,7 +67,8 @@ function Main() {
         <Route path="/teacher-register" element={<TeacherRegister />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
         <Route path="teacher-mycourses" element={<TeacherMycourses />} />
-        <Route path="/teacher-favourite" element={<TeacherFavourite />} />
+        <Route path="/teacher-addcourse" element={<TeacherFavourite />} />
+        <Route path="/teacher-addchapter/:course_id" element={<TeacherAddchapter />} />
         <Route path="/teacher-recommended" element={<TeacherRecommended />} />
         <Route path="/teacher-profilesetting" element={<TeacherProfilesetting />} />
         <Route path="/teacher-changepassword" element={<TeacherChangepassword />} />
