@@ -35,6 +35,7 @@ function TeacherLogin() {
                 // console.log(res.data)
                 if (res.data.bool==true){                             //1. if boolean is true then we will store the data inside the local storage.
                     localStorage.setItem('teacherLoginStatus','true')
+                    localStorage.setItem('teacherId',res.data.teacher_id)   //we are saving the teacher's id from the backend in the local storage.
                     window.location.href='/teacher-dashboard'
                     
                 }

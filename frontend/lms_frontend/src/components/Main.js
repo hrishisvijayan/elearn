@@ -68,7 +68,7 @@ function Main() {
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
         <Route path="teacher-mycourses" element={<TeacherMycourses />} />
         <Route path="/teacher-addcourse" element={<TeacherFavourite />} />
-        <Route path="/teacher-addchapter/:course_id" element={<TeacherAddchapter />} />
+        <Route path="/teacher-mycourses/teacher-addchapter/:course_id" element={<TeacherAddchapter />} />
         <Route path="/teacher-recommended" element={<TeacherRecommended />} />
         <Route path="/teacher-profilesetting" element={<TeacherProfilesetting />} />
         <Route path="/teacher-changepassword" element={<TeacherChangepassword />} />

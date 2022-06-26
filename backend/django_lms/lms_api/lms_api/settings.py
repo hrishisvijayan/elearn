@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -148,3 +149,11 @@ CORS_ALLOW_ALL_ORIGINS = True            # It is used to overcome the cross orig
 # CORS_ALLOWED_ORIGINS=[                   # or this can also be used for specific url
 #     "http://localhost:3000"
 # ]
+
+
+
+#****** we can only access the image through url, so we have to concatenate root and url in our url file(not in the applicatoin url but in the project level url)
+
+MEDIA_URL = '/media/'                          # this is the media folder 
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')    # this is the path of our app ,in this app we are joining the media directory.
+

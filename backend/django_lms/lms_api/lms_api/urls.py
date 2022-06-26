@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings           # this section is entirely done inorder to fetch the images from the backend, through media_url,media_root.
+from django.conf.urls.static import static # this section is entirely done inorder to fetch the images from the backend, through media_url,media_root.
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('main.urls')), 
     path('api-auth/',include('rest_framework.urls'))        #for providing authentication using rest framewok - it has  connection with imported permission in views 
-]
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)    # this section is entirely done inorder to fetch the images from the backend, through media_url,media_root.

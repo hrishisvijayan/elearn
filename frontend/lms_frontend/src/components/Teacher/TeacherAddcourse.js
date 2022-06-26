@@ -58,11 +58,12 @@ function TeacherFavourite() {
                 }
             }).then((res)=>{
                 console.log(res.data)
+                window.location.href='/teacher-mycourses'
             });
             }catch(error){
                 console.log(error)
            }
-
+           
     }
 
 

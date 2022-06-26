@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework import generics
 from rest_framework import permissions
-from .serializers import TeacherSerializer,CategorySerializer,CourseSerializer
+from .serializers import TeacherSerializer,CategorySerializer,CourseSerializer,ChapterSerializer 
 from . import models
 
 
@@ -42,20 +42,39 @@ def teacher_login(request):
     password    = request.POST.get('password')
     teacherData = models.Teacher.objects.get(email=email,password=password)
     if teacherData:
-        return JsonResponse({'bool' : True})
+        return JsonResponse({'bool' : True,'teacher_id':teacherData.id})       # this thing is used to get the user id of the current logged in teacher and to fetch all the courses under him --- inorder to have this id on the fronend we have to save in the local storage in the front end
     else:
         return JsonResponse({'bool' : False})
 
 
-class CategoryList(generics.ListCreateAPIView):       #through this class method we can view all the contents of the teacher allows to create data through post method
+class CategoryList(generics.ListCreateAPIView):      
     queryset=models.CourseCategory.objects.all()
     serializer_class=CategorySerializer
     # permission_classes=[permissions.IsAuthenticated]
 
 #course    
-class CourseList(generics.ListCreateAPIView):       #through this class method we can view all the contents of the teacher allows to create data through post method
+class CourseList(generics.ListCreateAPIView):       
     queryset=models.Course.objects.all()
     serializer_class=CourseSerializer
     # permission_classes=[permissions.IsAuthenticated]
 
         
+#specific teacher course
+class TeacherCourseList(generics.ListAPIView):       
+    serializer_class=CourseSerializer
+    # permission_classes=[permissions.IsAuthenticated]
+
+
+    def get_queryset(self):                                   #here I am not creating any function but overwriting the query set inside apiview
+        teacher_id=self.kwargs['teacher_id']                  # we are getting the id from self.keyword arguments -- this will be all in apiview class
+        teacher=models.Teacher.objects.get(pk=teacher_id)     #after getting the id we have to take the teacher's id from the teachers table
+        return models.Course.objects.filter(teacher=teacher)  #after that we can take the specific course according to the teachers id that we have taken in the above line     
+
+
+#chapter                              #added as new
+class ChapterList(generics.ListCreateAPIView): 
+    queryset=models.Chapter.objects.all()      
+    serializer_class=ChapterSerializer
+
+
+

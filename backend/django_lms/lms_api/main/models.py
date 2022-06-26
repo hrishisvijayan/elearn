@@ -41,6 +41,24 @@ class Course(models.Model):
     class Meta:                #this meta is used inorder to modify the name of database during display in django admin page
         verbose_name_plural = "3. Course " 
 
+    def __str__(self):
+        return self.title
+
+
+
+#Chapter Model --added new 
+class Chapter(models.Model):  
+    course = models.ForeignKey(Course,on_delete=models.CASCADE)    #here cascade so that if the course category is deleted then the the course is deleted
+    title = models.CharField(max_length=150)
+    description = models.TextField()
+    video=models.FileField(upload_to='chapter_videos/',null=True)            # for uploading video we should put field file in it. 
+    remarks=models.TextField(null=True)                                        # this null = true is for because it is a modification.
+
+    class Meta:                #this meta is used inorder to modify the name of database during display in django admin page
+        verbose_name_plural = "4. Chapters " 
+    def __str__(self):
+        return self.title
+
 
 #Student model
 class Student(models.Model):
@@ -54,7 +72,7 @@ class Student(models.Model):
 
 
     class Meta:                #this meta is used inorder to modify the name of database during display in django admin page
-        verbose_name_plural = "4. Student" 
+        verbose_name_plural = "5. Student" 
 
 
 
