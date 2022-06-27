@@ -32,6 +32,7 @@ import PopularTeachers from './PopularTeachers';
 import CategoryCourses from './CategoryCourses';
 import TeacherLogout from './Teacher/TeacherLogout';
 import TeacherAddchapter from './Teacher/TeacherAddchapter';
+import CourseChapter from './Teacher/CourseChapter';
 
 
 
@@ -47,6 +48,7 @@ function Main() {
         <Route path="/about" element={<About />} />
         <Route path="/detail/:course_id" element={<CourseDetail />} /> {/* here the course_id is passed to the component and useParams is used to pass the data which is passed through the url */}
         <Route path="/AllCourses" element={<AllCourses />} />
+        <Route path="/all-chapter/:course_id" element={<CourseChapter />} />
         <Route path="/popular-courses" element={<PopularCourses />} />
         <Route path="/popular-teachers" element={<PopularTeachers />} />
         <Route path="/Category/:category_slug" element={<CategoryCourses />} />

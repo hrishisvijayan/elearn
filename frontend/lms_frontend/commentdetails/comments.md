@@ -15,3 +15,13 @@ In the add course page we can get the categroy from backend.
 7. In order to fetch images from the backend and display it on the front end we have to put media_url, media_root inside the settings.py folder in the backend. do some research on it.
 
  the process to display image is a big task changes have been done in the urls.py of the django main project folder not in the app urls.py folder, and some thing is added like 'static', you have to go there and read the comments. including the imported modules like 'os.path.something' understand why this these things are used and what is happening.
+
+
+8. when we are adding the chapter we need to pass the id of the course dynaimically. for that we have to get the id from the url using 'useparams()' hook.
+befor that we have to install 'react router dom' package. do some research on it.
+
+9. spend some time on adding course and chapters working. In terms of what is happening in models and how the currect chapter is passed to the correct course
+
+10. finished login page error message. for that to happen we have created a usestate and we created an error message which will store in to the state whenever bool : false is returned from the backend.
+
+11. in order to display the video from the backend we have to input the video tag. 

@@ -32,12 +32,14 @@ function TeacherLogin() {
         
         try{
             axios.post(baseUrl+'/teacher-login',teacherFormData).then((res)=>{
-                // console.log(res.data)
+                console.log(res.data)
                 if (res.data.bool==true){                             //1. if boolean is true then we will store the data inside the local storage.
                     localStorage.setItem('teacherLoginStatus','true')
                     localStorage.setItem('teacherId',res.data.teacher_id)   //we are saving the teacher's id from the backend in the local storage.
                     window.location.href='/teacher-dashboard'
                     
+                }else{
+                    setErrorMsg('Entered Email or Password incorrect !')    // we are setting the error message here. it is set if the bool is false which comes from the backend.
                 }
             });
         }catch(error){
@@ -52,9 +54,12 @@ function TeacherLogin() {
         window.location.href='/teacher-dashboard'
     }
 
+    const [erroMsg,setErrorMsg]=useState();     // this is set the error message if the user is inputting a wrong credentials
+
     useEffect(()=>{
         document.title='Teacher Login'
         console.log(localStorage.teacherLoginStatus)
+        console.log(erroMsg)
     })
 
     return (
@@ -63,6 +68,7 @@ function TeacherLogin() {
                 <div className='col-6 offset-3' >
                     <div className='card' >
                         <h3 className='card-header' > Teacher Login </h3>
+                        {erroMsg &&  <p className='text-danger' > {erroMsg} </p> }
                         <div className='card-body' >
 
                             <form>

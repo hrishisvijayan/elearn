@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Sidebar from './TeacherSidebar';
 import {useState,useEffect} from 'react';
 import axios from 'axios';
+import {useParams} from 'react-router-dom'; //new --inorder to get the id of the course from the url and pass it dynamically to add chapter 
 
 const baseUrl= 'http://127.0.0.1:8000/api'
 
@@ -38,11 +39,13 @@ function TeacherAddchapter() {
         })
         console.log('image checking',chapterData)
     }
+
+    const {course_id}=useParams();           //the 'course_id' should be the same name that we have given in the main.js file
      
     const _formData = null
-    const formSubmit=()=>{                //************** the key point to note here is if we don't give the name is append as exactly the same name as per seializer of backend then the response will be having a null values so be careful
+    const formSubmit=()=>{                     //************** the key point to note here is if we don't give the name is append as exactly the same name as per seializer of backend then the response will be having a null values so be careful
         const _formData = new FormData();
-        _formData.append('course',74);
+        _formData.append('course',course_id);  //****** here the course id is made dynamic with the help of 'useparams()', so that we upload the chapters according to the course,,, and we are passing it from the main.js file's link address
         _formData.append('chapter',1);
         _formData.append('title',chapterData.title);
         _formData.append('description',chapterData.description);

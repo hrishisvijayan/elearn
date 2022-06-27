@@ -17,6 +17,9 @@ urlpatterns = [
     #chapter
     path('chapter/',views.ChapterList.as_view()),
 
+    # specific chapter
+    path('course-chapter/<int:course_id>',views.CourseChapterList.as_view()),
+
     #teacher Courses
     path('teacher-courses/<int:teacher_id>',views.TeacherCourseList.as_view()),
 

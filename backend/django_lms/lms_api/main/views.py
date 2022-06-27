@@ -40,10 +40,19 @@ class TeachersDetail(generics.RetrieveUpdateDestroyAPIView):   #through this cla
 def teacher_login(request):
     email       = request.POST.get('email')
     password    = request.POST.get('password')
-    teacherData = models.Teacher.objects.get(email=email,password=password)
+    try:
+        teacherData = models.Teacher.objects.get(email=email,password=password)
+    # except:                  this commented code was my own code
+    #     teacherData = None
+    #     print(teacherData)
+    except models.Teacher.DoesNotExist:   #this is the standard code
+        teacherData = None
+
     if teacherData:
+        print('inside if')
         return JsonResponse({'bool' : True,'teacher_id':teacherData.id})       # this thing is used to get the user id of the current logged in teacher and to fetch all the courses under him --- inorder to have this id on the fronend we have to save in the local storage in the front end
     else:
+        print('outside if')
         return JsonResponse({'bool' : False})
 
 
@@ -76,5 +85,13 @@ class ChapterList(generics.ListCreateAPIView):
     queryset=models.Chapter.objects.all()      
     serializer_class=ChapterSerializer
 
-
+#specific chapter under courses         added as new also 
+class CourseChapterList(generics.ListAPIView): 
+    # queryset=models.Chapter.objects.all()      
+    serializer_class=ChapterSerializer
+    
+    def get_queryset(self):
+        course_id = self.kwargs['course_id']       #here the id that we pass along with url is taken 
+        course=models.Course.objects.get(pk=course_id)
+        return models.Chapter.objects.filter(course=course)
 

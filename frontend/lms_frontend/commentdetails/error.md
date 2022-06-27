@@ -18,3 +18,5 @@
                               preview -> data coming from the backd
 8. while uploading the image it is also important to focus on the syntax that we append in the form. you have to give the file, file name as well
 
+9. do not put any variable declaration inside formdata submission fuction. it should be declared outside of the function.
+
