@@ -20,3 +20,11 @@
 
 9. do not put any variable declaration inside formdata submission fuction. it should be declared outside of the function.
 
+10. react will show  BLANK PAGE and console will not show any error if 'useState[]' is like this or 'Link' is not given any to=''. 
+
+11. Encountered an error while working with editing chapter. there I had to pass the course_id into the form data and I tried to get the response from the backend. but when I tried to assign it to variable like
+var course_id = 1, re assigned it by course_id = res.data.course. in the axios. but still the var course id was taking the static value. 
+
+I solved it in my own way by setting the variable inside the localstorage inside the axios.
+
+12. error due to slash appending problem -- can be solved by adding '/' in the last. inside the axios.

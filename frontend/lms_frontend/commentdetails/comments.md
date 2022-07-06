@@ -25,3 +25,6 @@ befor that we have to install 'react router dom' package. do some research on it
 10. finished login page error message. for that to happen we have created a usestate and we created an error message which will store in to the state whenever bool : false is returned from the backend.
 
 11. in order to display the video from the backend we have to input the video tag. 
+
+12. inorder to apply sweet alert first install it and import it in the component that you are going to apply it. sweet alert 2 is the installed version.
+

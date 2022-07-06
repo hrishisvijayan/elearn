@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response 
 from rest_framework import generics
 from rest_framework import permissions
-from .serializers import TeacherSerializer,CategorySerializer,CourseSerializer,ChapterSerializer 
+from .serializers import StudentSerializer, TeacherSerializer,CategorySerializer,CourseSerializer,ChapterSerializer 
 from . import models
 
 
@@ -40,6 +40,8 @@ class TeachersDetail(generics.RetrieveUpdateDestroyAPIView):   #through this cla
 def teacher_login(request):
     email       = request.POST.get('email')
     password    = request.POST.get('password')
+    print('this is email',email)
+    print('this is password',password)
     try:
         teacherData = models.Teacher.objects.get(email=email,password=password)
     # except:                  this commented code was my own code
@@ -95,3 +97,43 @@ class CourseChapterList(generics.ListAPIView):
         course=models.Course.objects.get(pk=course_id)
         return models.Chapter.objects.filter(course=course)
 
+
+class ChapterSingle(generics.RetrieveUpdateAPIView): 
+    queryset=models.Chapter.objects.all()      
+    serializer_class=ChapterSerializer
+
+
+
+#student
+class StudentList(generics.ListCreateAPIView):       #through this class method we can view all the contents of the teacher allows to create data through post method
+    queryset=models.Student.objects.all()
+    serializer_class=StudentSerializer
+
+
+class StudentDetail(generics.RetrieveUpdateAPIView):   #through this class method we can delete the data 
+    queryset=models.Student.objects.all()
+    serializer_class=StudentSerializer
+    # permission_classes=[permissions.IsAuthenticated] 
+
+
+
+@csrf_exempt
+def student_login(request):
+    email       = request.POST.get('email')
+    password    = request.POST.get('password')
+    print('this is email',email)
+    print('this is password',password)
+    try:
+        studentData = models.Student.objects.get(email=email,password=password)
+    # except:                  this commented code was my own code
+    #     teacherData = None
+    #     print(teacherData)
+    except models.Student.DoesNotExist:   #this is the standard code
+        studentData = None
+
+    if studentData:
+        print('inside if')
+        return JsonResponse({'bool' : True,'student_id':studentData.id})       # this thing is used to get the user id of the current logged in teacher and to fetch all the courses under him --- inorder to have this id on the fronend we have to save in the local storage in the front end
+    else:
+        print('outside if')
+        return JsonResponse({'bool' : False})

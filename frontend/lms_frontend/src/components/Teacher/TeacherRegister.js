@@ -74,7 +74,7 @@ function TeacherRegister(){
         <div className='container mt-4' >
         <div className='row' >
             <div className='col-6 offset-3' >
-                {teacherData.status=='success' && <p className='text-success' > Registration Successfulllllll </p>}    {/* this is used to print message on the registration form according to the submit form response       */}
+                {teacherData.status=='success' && <p className='text-success' > Registration Successfull </p>}    {/* this is used to print message on the registration form according to the submit form response       */}
                 {teacherData.status=='error' && <p className='text-danger' > something went wrong </p>}                {/* this is used to print message on the registration form according to the submit form response       */}
                 <div className='card' >
                     <h3 className='card-header' > Teacher Register </h3>

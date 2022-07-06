@@ -17,10 +17,17 @@ urlpatterns = [
     #chapter
     path('chapter/',views.ChapterList.as_view()),
 
-    # specific chapter
+    # specific chapter (all the chapters under specific course) 
     path('course-chapter/<int:course_id>',views.CourseChapterList.as_view()),
 
     #teacher Courses
     path('teacher-courses/<int:teacher_id>',views.TeacherCourseList.as_view()),
+
+    path('edit-chapter/<int:pk>',views.ChapterSingle.as_view()),
+
+    #student
+     path('student/', views.StudentList.as_view()),
+     path('student-login',views.student_login), 
+     path('student/<int:pk>/', views.StudentDetail.as_view()),
 
 ]

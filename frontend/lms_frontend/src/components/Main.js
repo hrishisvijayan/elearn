@@ -13,6 +13,8 @@ import Favourite from './User/Favourite';
 import Recommended from './User/Recommended';
 import Changepassword from './User/Changepassword';
 import Profilesetting from './User/Profilesetting';
+import StudentLogout from './User/StudentLogout';
+
 
 import { Routes as Switch,Route } from 'react-router-dom'
 
@@ -33,6 +35,8 @@ import CategoryCourses from './CategoryCourses';
 import TeacherLogout from './Teacher/TeacherLogout';
 import TeacherAddchapter from './Teacher/TeacherAddchapter';
 import CourseChapter from './Teacher/CourseChapter';
+import EditChapter from './Teacher/TeacherEditChapter';
+
 
 
 
@@ -55,6 +59,7 @@ function Main() {
 
         {/* User  */}
         <Route path="/login" element={<Login />} />
+        <Route path="/student-logout" element={<StudentLogout />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/mycourses" element={<Mycourses />} />
@@ -71,6 +76,7 @@ function Main() {
         <Route path="teacher-mycourses" element={<TeacherMycourses />} />
         <Route path="/teacher-addcourse" element={<TeacherFavourite />} />
         <Route path="/teacher-mycourses/teacher-addchapter/:course_id" element={<TeacherAddchapter />} />
+        <Route path="/teacher-edit-chapter/:chapter_id" element={<EditChapter />} />
         <Route path="/teacher-recommended" element={<TeacherRecommended />} />
         <Route path="/teacher-profilesetting" element={<TeacherProfilesetting />} />
         <Route path="/teacher-changepassword" element={<TeacherChangepassword />} />

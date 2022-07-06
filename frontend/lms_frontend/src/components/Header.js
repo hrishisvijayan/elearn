@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 function Header() {
 
 
-  useEffect(()=>{
-    document.title='Teacher Login'
-    console.log('how are you',localStorage.teacherLoginStatus)
+  useEffect(() => {
+    document.title = 'Teacher Login'
+    console.log('how are you', localStorage.teacherLoginStatus)
   })
 
   return (
@@ -32,40 +32,40 @@ function Header() {
             <li className="nav-item">
               <div className="dropdown">
                 <a className="btn text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Teacher
+                  Teacher
                 </a>
 
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                { localStorage.teacherLoginStatus !=='true' &&
-                          <>
-                          <li> 
-                            <Link to="/teacher-login" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Login </a> </Link>
-                          </li>
-                          <li>
-                          <Link to="/teacher-register" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Register </a> </Link>
-                          </li>
-                          </>
+                  {localStorage.teacherLoginStatus !== 'true' &&
+                    <>
+                      <li>
+                        <Link to="/teacher-login" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Login </a> </Link>
+                      </li>
+                      <li>
+                        <Link to="/teacher-register" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Register </a> </Link>
+                      </li>
+                    </>
                   }
                   <li>
-                  <Link to="/teacher-dashboard" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Dashboard </a> </Link>
+                    <Link to="/teacher-dashboard" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Dashboard </a> </Link>
                   </li>
                   <li>
-                  <Link to="/teacher-logout" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Logout </a> </Link>
+                    <Link to="/teacher-logout" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Teacher Logout </a> </Link>
                   </li>
-                  
+
                 </ul>
               </div>
             </li>
 
-          
+
 
             <li className="nav-item">
               <div className="dropdown">
                 <a className="btn text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    User
+                  User
                 </a>
 
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {/* <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <li> 
                     <Link to="/login" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > User Login </a> </Link>
                    </li>
@@ -79,6 +79,26 @@ function Header() {
                   <Link to="/register" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > Logout </a> </Link>
                   </li>
                   
+                </ul> */}
+
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  {localStorage.studentLoginStatus !== 'true' &&
+                    <>
+                      <li>
+                        <Link to="/login" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > User Login </a> </Link>
+                      </li>
+                      <li>
+                        <Link to="/register" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > User Register </a> </Link>
+                      </li>
+                    </>
+                  }
+                  <li>
+                    <Link to="/dashboard" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > User Dashboard </a> </Link>
+                  </li>
+                  <li>
+                    <Link to="/student-logout" style={{ textDecoration: 'none' }} > <a className="nav-link disabled text-dark" style={{ color: "white" }} > User Logout </a> </Link>
+                  </li>
+
                 </ul>
               </div>
             </li>
